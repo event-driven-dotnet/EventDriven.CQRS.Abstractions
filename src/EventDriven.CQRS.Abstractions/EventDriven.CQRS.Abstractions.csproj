@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>Tony Sneed</Authors>
+        <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+        <PackageVersion>2.0.0-beta2</PackageVersion>
+        <Description>Abstractions for implementing Command Query Responsibility Segregation in .NET.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/event-driven-dotnet/EventDriven.CQRS.Abstractions</PackageProjectUrl>
+        <PackageIcon>eda-logo.jpeg</PackageIcon>
+        <RepositoryUrl>https://github.com/event-driven-dotnet/EventDriven.CQRS.Abstractions.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>cqrs command-query-responsibility-segregation event-driven event-driven-architecture</PackageTags>
+        <PackageReleaseNotes>https://github.com/event-driven-dotnet/EventDriven.CQRS.Abstractions/releases/tag/v2.0.0-beta2</PackageReleaseNotes>
+        <PackageId>EventDriven.CQRS.Abstractions</PackageId>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\ReadMe.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+        <None Include="..\..\images\eda-logo.jpeg">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EventDriven.DDD.Abstractions" Version="2.0.0-beta2" />
+    </ItemGroup>
+
+</Project>
