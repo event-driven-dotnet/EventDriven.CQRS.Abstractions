@@ -1,5 +1,3 @@
-using EventDriven.DDD.Abstractions.Entities;
-
 namespace EventDriven.CQRS.Abstractions.Queries;
 
 /// <summary>
@@ -11,15 +9,7 @@ public interface IQueryBroker
     /// Send a query to be handled by a query handler.
     /// </summary>
     /// <param name="query">The query.</param>
+    /// <typeparam name="TQueryResult">Query result type.</typeparam>
     /// <returns>The query result.</returns>
-    Task<QueryResult> SendAsync(IQuery query);
-    
-    /// <summary>
-    /// Send a query to be handled by a query handler.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <typeparam name="TEntity">Entity type.</typeparam>
-    /// <returns>The query result.</returns>
-    Task<QueryResult<TEntity>> SendAsync<TEntity>(IQuery<TEntity> query)
-        where TEntity : Entity;
+    Task<TQueryResult> SendAsync<TQueryResult>(IQuery<TQueryResult> query);
 }

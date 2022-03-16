@@ -8,9 +8,14 @@ namespace EventDriven.CQRS.Abstractions.Commands;
 public interface ICommandBase
 {
     /// <summary>
-    /// Represents the ID of the entity the command is in reference to.
+    /// Represents the Id of the entity the command is in reference to.
     /// </summary>
     Guid EntityId { get; }
+
+    /// <summary>
+    /// Represents the ETag of the entity the command is in reference to.
+    /// </summary>
+    string? EntityETag { get; }
 }
 
 /// <inheritdoc />
@@ -20,5 +25,5 @@ public interface ICommandBase<out TEntity> : ICommandBase
     /// <summary>
     /// The entity the command is in reference to.
     /// </summary>
-    public TEntity Entity { get; }
+    public TEntity? Entity { get; }
 }
