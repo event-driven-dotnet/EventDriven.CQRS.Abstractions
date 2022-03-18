@@ -20,5 +20,12 @@ public static class ServiceCollectionExtensions
         params Type[] assemblyMarkerTypes) => services
             .AddSingleton<ICommandBroker, CommandBroker>()
             .AddSingleton<IQueryBroker, QueryBroker>()
-            .AddMediatR(assemblyMarkerTypes);
+            .AddMediatR(assemblyMarkerTypes)
+            .Scan(scan =>
+            {
+                scan.FromEntryAssembly()
+                    .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
+                    .AsSelfWithInterfaces()
+                    .WithTransientLifetime();
+            });
 }
