@@ -7,7 +7,7 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Authors>Tony Sneed</Authors>
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
-        <PackageVersion>2.0.0-beta3</PackageVersion>
+        <PackageVersion>2.0.0-beta4</PackageVersion>
         <Description>Abstractions for implementing Command Query Responsibility Segregation in .NET.</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/event-driven-dotnet/EventDriven.CQRS.Abstractions</PackageProjectUrl>
@@ -15,7 +15,7 @@
         <RepositoryUrl>https://github.com/event-driven-dotnet/EventDriven.CQRS.Abstractions.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>cqrs command-query-responsibility-segregation event-driven event-driven-architecture</PackageTags>
-        <PackageReleaseNotes>https://github.com/event-driven-dotnet/EventDriven.CQRS.Abstractions/releases/tag/v2.0.0-beta3</PackageReleaseNotes>
+        <PackageReleaseNotes>https://github.com/event-driven-dotnet/EventDriven.CQRS.Abstractions/releases/tag/v2.0.0-beta4</PackageReleaseNotes>
         <PackageId>EventDriven.CQRS.Abstractions</PackageId>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
     </PropertyGroup>

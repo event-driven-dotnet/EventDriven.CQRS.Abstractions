@@ -11,7 +11,7 @@ namespace EventDriven.CQRS.Abstractions.DependencyInjection;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Registers command and query handlers from the assemblies that contain the specified types.
+    /// Register command and query handlers from the assemblies that contain the specified types.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
     /// <param name="assemblyMarkerTypes">Assembly marker types.</param>
@@ -25,6 +25,9 @@ public static class ServiceCollectionExtensions
             {
                 scan.FromEntryAssembly()
                     .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
+                    .AsSelfWithInterfaces()
+                    .WithTransientLifetime()
+                    .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
                     .AsSelfWithInterfaces()
                     .WithTransientLifetime();
             });
