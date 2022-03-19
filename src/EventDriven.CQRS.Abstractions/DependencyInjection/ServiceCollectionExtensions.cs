@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
             .AddMediatR(assemblyMarkerTypes)
             .Scan(scan =>
             {
-                scan.FromEntryAssembly()
+                scan.FromAssembliesOf(assemblyMarkerTypes)
                     .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
                     .AsSelfWithInterfaces()
                     .WithTransientLifetime()
