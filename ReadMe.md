@@ -7,12 +7,13 @@ Abstractions for implementing Command Query Responsibility Segregation in .NET.
 
 ## Packages
 - [EventDriven.CQRS.Abstractions](https://www.nuget.org/packages/EventDriven.CQRS.Abstractions)
+- [EventDriven.CQRS.Extensions](https://www.nuget.org/packages/EventDriven.CQRS.Extensions)
 
 ## Introduction
 
 [Command Query Responsibility Segregation](https://martinfowler.com/bliki/CQRS.html) (CQRS) is a software a pattern that separates read and update operations for a data store.
 
-> **Note**: Version 2.0 and later uses [MediatR](https://github.com/jbogard/MediatR) to enable a handler per command pattern with cross-cutting concerns.
+> **Note**: EventDriven.CQRS.Abstractions version 2.0 or later uses [MediatR](https://github.com/jbogard/MediatR) to enable a handler per command pattern with behaviors for cross-cutting concerns.
 
 The **EventDriven.CQRS.Abstractions** library contains interfaces and abstract base classes to support these concepts:
 - **Command**: An object that is sent to the domain for a state change which is handled by a command handler.
