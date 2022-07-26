@@ -26,9 +26,49 @@ public static class ServiceCollectionExtensions
                 scan.FromAssembliesOf(assemblyMarkerTypes)
                     .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
                     .AsSelfWithInterfaces()
-                    .WithTransientLifetime()
+                    .WithSingletonLifetime()
                     .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
                     .AsSelfWithInterfaces()
-                    .WithTransientLifetime();
+                    .WithSingletonLifetime();
             });
+
+    /// <summary>
+    /// Register command and query handlers from the assemblies that contain the specified types.
+    /// </summary>
+    /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
+    /// <param name="lifetime">Service lifetime.</param>
+    /// <param name="assemblyMarkerTypes">Assembly marker types.</param>
+    /// <returns>A reference to this instance after the operation has completed.</returns>
+    public static IServiceCollection AddHandlers(this IServiceCollection services, 
+        ServiceLifetime lifetime, params Type[] assemblyMarkerTypes)
+    {
+        services.AddMediatR(assemblyMarkerTypes);
+        switch (lifetime)
+        {
+            case ServiceLifetime.Scoped:
+                services
+                    .AddScoped<ICommandBroker, CommandBroker>()
+                    .AddScoped<IQueryBroker, QueryBroker>();
+                break;
+            case ServiceLifetime.Transient:
+                return services
+                    .AddTransient<ICommandBroker, CommandBroker>()
+                    .AddTransient<IQueryBroker, QueryBroker>();
+            default:
+                return services
+                    .AddSingleton<ICommandBroker, CommandBroker>()
+                    .AddSingleton<IQueryBroker, QueryBroker>();
+        }
+        services.Scan(scan =>
+        {
+            scan.FromAssembliesOf(assemblyMarkerTypes)
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
+                .AsSelfWithInterfaces()
+                .WithLifetime(lifetime)
+                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
+                .AsSelfWithInterfaces()
+                .WithLifetime(lifetime);
+        });
+        return services;
+    }
 }
